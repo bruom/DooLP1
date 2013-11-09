@@ -20,7 +20,7 @@ public class Usuario implements Gravavel{
 	
 	@Override
 	public String getId(){
-		return this.id;
+		return "usuario-"+this.id;
 	}
 	
 	@XmlElement

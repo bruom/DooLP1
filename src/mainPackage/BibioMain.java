@@ -2,13 +2,15 @@ package mainPackage;
 
 import java.util.Scanner;
 
+import javax.xml.bind.JAXBException;
+
 import biblio.Usuario;
 
 import fileReaderWriter.Escrevinhator;
 
 public class BibioMain {
 	
-	public static void main(String[]args){
+	public static void main(String[]args) throws JAXBException{
 		Scanner stdin = new Scanner(System.in);
 		String userIn;
 		String senha;
