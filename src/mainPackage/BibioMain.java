@@ -18,7 +18,7 @@ public class BibioMain {
 		
 		System.out.println("Bem vindo ao Bibliotecator v.1!");
 		System.out.println("Um projeto por Bruno Omella e Gabriel Melo.");
-		System.out.println("Lembre-se de ler o arquivo 'readMe' na documentação!");
+		System.out.println("Lembre-se de ler o arquivo 'readMe' na documentacao!");
 		System.out.println("\nDigite seu nome de usuário: ");
 		userIn = stdin.next();
 		
@@ -39,9 +39,10 @@ public class BibioMain {
 		System.out.println("\nInsira sua senha: ");
 		userIn = stdin.next();
 		if(userIn == user.getPass())
-			System.out.println("\nAutenticação concluída. Entrando...\n");
-		else
+			System.out.println("\nAutenticacao concluida. Entrando...\n");
+		else if(userIn != user.getPass())
 			System.out.println("\nSenha incorreta.");
+		System.out.println(userIn + "\n" + user.getPass());
 		
 	}
 
