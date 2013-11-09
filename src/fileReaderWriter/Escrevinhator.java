@@ -10,7 +10,7 @@ import javax.xml.bind.Unmarshaller;
 
 public class Escrevinhator {
 
-	private final static String root = "." + File.separator + "data"
+	private final static String root =  "data"
 			+ File.separator;
 	private final static String textos = root + "textos" + File.separator;
 	private final static String usuarios = root + "usuarios" + File.separator;
@@ -58,7 +58,7 @@ public class Escrevinhator {
 	 * @return O Gravavel
 	 * @throws JAXBException
 	 */
-	public static Gravavel fromXML(String id) throws JAXBException {
+	public static Usuario fromXML(String id) throws JAXBException {
 		File file = null;
 		JAXBContext jaxbContext = null;
 		
@@ -75,13 +75,13 @@ public class Escrevinhator {
 			file = new File(textos + id + ".tcc");
 			jaxbContext = JAXBContext.newInstance(Tcc.class);
 		}else if(id.contains("usuario")){
-			file = new File(textos + id + ".usuario");
+			file = new File(usuarios + id + ".usuario");
 			jaxbContext = JAXBContext.newInstance(Usuario.class);
 		}
 		
 		
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-		Gravavel o = (Gravavel) jaxbUnmarshaller.unmarshal(file);
+		Usuario o = (Usuario) jaxbUnmarshaller.unmarshal(file);
 		return o;
 	}
 
