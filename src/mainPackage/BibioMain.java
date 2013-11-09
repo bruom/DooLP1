@@ -14,15 +14,15 @@ public class BibioMain {
 		Scanner stdin = new Scanner(System.in);
 		String userIn;
 		String senha;
-		String nome;
-		Usuario user = new Usuario();
+		Usuario user;
 		
 		System.out.println("Bem vindo ao Bibliotecator v.1!");
 		System.out.println("Um projeto por Bruno Omella e Gabriel Melo.");
 		System.out.println("Lembre-se de ler o arquivo 'readMe' na documentação!");
 		System.out.println("\nDigite seu nome de usuário: ");
 		userIn = stdin.next();
-		System.out.println("Gibe senha");
+		
+		/*System.out.println("Gibe senha");
 		senha = stdin.next();
 		System.out.println("Gibe nome");
 		nome = stdin.next();
@@ -32,7 +32,16 @@ public class BibioMain {
 		user.setPass(senha);
 		
 		Escrevinhator.toXML(user);
+		*/
 		
+		user = (Usuario)Escrevinhator.fromXML("usuario-"+userIn);
+		
+		System.out.println("\nInsira sua senha: ");
+		userIn = stdin.next();
+		if(userIn == user.getPass())
+			System.out.println("\nAutenticação concluída. Entrando...\n");
+		else
+			System.out.println("\nSenha incorreta.");
 		
 	}
 
