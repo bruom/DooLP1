@@ -58,31 +58,49 @@ public class Escrevinhator {
 	 * @return O Gravavel
 	 * @throws JAXBException
 	 */
-	public static Usuario fromXML(String id) throws JAXBException {
+	public static Object fromXML(String id) throws JAXBException {
 		File file = null;
 		JAXBContext jaxbContext = null;
 		
 		if(id.contains("liv")){
 			file = new File(textos + id + ".livro");
 			jaxbContext = JAXBContext.newInstance(Livro.class);
+			
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Livro o = (Livro) jaxbUnmarshaller.unmarshal(file);
+			return o;
 		}else if(id.contains("rev")){
 			file = new File(textos + id + ".revista");
 			jaxbContext = JAXBContext.newInstance(Revista.class);
+			
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Revista o = (Revista) jaxbUnmarshaller.unmarshal(file);
+			return o;
 		}else if(id.contains("acongr")){
 			file = new File(textos + id + ".acongresso");
 			jaxbContext = JAXBContext.newInstance(ArtigoCongresso.class);
+			
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			ArtigoCongresso o = (ArtigoCongresso) jaxbUnmarshaller.unmarshal(file);
+			return o;
 		}else if(id.contains("tcc")){
 			file = new File(textos + id + ".tcc");
 			jaxbContext = JAXBContext.newInstance(Tcc.class);
+			
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Tcc o = (Tcc) jaxbUnmarshaller.unmarshal(file);
+			return o;
 		}else if(id.contains("usuario")){
 			file = new File(usuarios + id + ".usuario");
 			jaxbContext = JAXBContext.newInstance(Usuario.class);
+			
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Usuario o = (Usuario) jaxbUnmarshaller.unmarshal(file);
+			return o;
+		}else{
+			return null;
 		}
 		
-		
-		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-		Usuario o = (Usuario) jaxbUnmarshaller.unmarshal(file);
-		return o;
 	}
 
 }
