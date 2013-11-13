@@ -3,15 +3,13 @@ package mainPackage;
 import java.util.Scanner;
  
 import javax.xml.bind.JAXBException;
-<<<<<<< HEAD
+
  
-import biblio.*;
  
-=======
+
 
 import biblio.*;
 
->>>>>>> 33926ea27cc116309064395d4982e2f10e18fd0b
 import fileReaderWriter.Escrevinhator;
  
 public class BibioMain {
