@@ -10,7 +10,7 @@ import fileReaderWriter.Escrevinhator;
  
 public class BibioMain {
 	
-	public static void main(String[]args){
+	public BibioMain(){
 		Scanner stdin = new Scanner(System.in);
 		String userIn;
 		String senha;
@@ -67,5 +67,9 @@ public class BibioMain {
 			e.printStackTrace();
 		}
 	}
- 
+	
+	public static void main(String[]args){
+		BibioMain bibio = new BibioMain();
+	}
+	 
 }
