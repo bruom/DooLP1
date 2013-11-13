@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.*;
 public class Texto implements Gravavel{
 	private String titulo;
 	private String autor;
-	private ArrayList<String> keywords = new <String>ArrayList();
+	private ArrayList<String> keywords = new ArrayList<String>();
 	private String id;
 	
 	public Texto(){

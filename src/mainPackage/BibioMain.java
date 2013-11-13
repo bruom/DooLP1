@@ -3,18 +3,14 @@ package mainPackage;
 import java.util.Scanner;
  
 import javax.xml.bind.JAXBException;
-
  
- 
-
-
 import biblio.*;
-
+ 
 import fileReaderWriter.Escrevinhator;
  
 public class BibioMain {
 	
-	public static void main(String[]args) throws JAXBException{
+	public static void main(String[]args){
 		Scanner stdin = new Scanner(System.in);
 		String userIn;
 		String senha;
@@ -39,7 +35,11 @@ public class BibioMain {
 //		Escrevinhator.toXML(user);
 		
 		
-		user = (Usuario)Escrevinhator.fromXML("usuario-"+userIn);
+		try {
+			user = (Usuario)Escrevinhator.fromXML("usuario-"+userIn);
+		} catch (JAXBException e) {
+			System.out.println("Usuario nao existente!");
+		}
 		
 		System.out.println("\nInsira sua senha: ");
 		userIn = stdin.next();
@@ -51,6 +51,7 @@ public class BibioMain {
 		System.out.println("\n.\n.\n.\nTeste de upload de Livro!");
 		Livro l = new Livro();
 		System.out.println("Insira o ID do livro:");
+		System.out.println(stdin.nextLine());
 		l.setId(stdin.nextLine());
 		System.out.println("Insira o titulo do livro:");
 		l.setTitulo(stdin.nextLine());
@@ -59,7 +60,12 @@ public class BibioMain {
 		System.out.println("Insira uma palavra chave:");
 		l.addKeyword(stdin.nextLine());
 		
-		Escrevinhator.toXML(l);
+		try {
+			Escrevinhator.toXML(l);
+		} catch (JAXBException e) {
+			System.out.println("ERRO MALUCO DO K7");
+			e.printStackTrace();
+		}
 	}
  
 }
