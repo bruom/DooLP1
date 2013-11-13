@@ -10,8 +10,7 @@ import javax.xml.bind.Unmarshaller;
 
 public class Escrevinhator {
 
-	private final static String root =  "data"
-			+ File.separator;
+	private final static String root =  "data"	+ File.separator;
 	private final static String textos = root + "textos" + File.separator;
 	private final static String usuarios = root + "usuarios" + File.separator;
 
