@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<livro id="LivroTeste">
+    <autor>Magica</autor>
+    <keywords>eu</keywords>
+    <titulo>Batata</titulo>
+</livro>
