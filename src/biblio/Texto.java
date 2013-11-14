@@ -10,13 +10,15 @@ import javax.xml.bind.annotation.*;
 public class Texto implements Gravavel{
 	private String titulo;
 	private String autor;
-	private ArrayList<String> keywords = new <String>ArrayList();
+	private String conteudo;
+	private ArrayList<String> keywords = new ArrayList<String>();
 	private String id;
 	
 	public Texto(){
 		
 	}
 	
+		
 	@XmlAttribute
 	public void setId(String s){
 		this.id = s;
@@ -48,6 +50,15 @@ public class Texto implements Gravavel{
 	@XmlElement
 	public void setKeywords(ArrayList<String> al){
 		this.keywords = al;
+	}
+	
+	@XmlElement
+	public void setConteudo(String conteudo){
+		this.conteudo = conteudo;
+	}
+	
+	public String getConteudo(){
+		return this.conteudo;
 	}
 	
 	public void addKeyword(String s){

@@ -1,5 +1,9 @@
 package biblio;
 
-public class Artigo extends Texto {
+public abstract class Artigo extends Texto {
+	
+	public Artigo(){
+		super();
+	}
 
 }
