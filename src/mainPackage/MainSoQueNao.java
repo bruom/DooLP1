@@ -11,19 +11,15 @@ public class MainSoQueNao {
 
 	public static void main(String[] args) {
 		
-//		criaRevista();
+		Usuario u = null;
 		
-		Texto txt = null;
 		try {
-			txt = (Texto) Escrevinhator.fromXML("rev-Veja");
+			u = (Usuario) Escrevinhator.fromXML("admin-Ademir");
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		if(txt instanceof Revista){
-			System.out.println("é um livro!");
-		}
 		
 
 	}
