@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<livro id="liv-batata">
+    <autor>eu</autor>
+    <keywords>batata</keywords>
+    <titulo>SUCESSO</titulo>
+    <ano>0</ano>
+    <preco>0.0</preco>
+</livro>
