@@ -17,17 +17,31 @@ public class MainSoQueNao {
 	
 	public static void criaLivro(){
 		Scanner stdin = new Scanner(System.in);
-		System.out.println("\n.\n.\n.\nTeste de upload de Livro!");
-		Livro l = new Livro();
-		System.out.println("Insira o ID do livro:");
 		System.out.println(stdin.nextLine());
-		l.setId(stdin.nextLine());
+		System.out.println("Teste de upload de Livro!");
+		Livro l = new Livro();
+		
 		System.out.println("Insira o titulo do livro:");
 		l.setTitulo(stdin.nextLine());
+		
 		System.out.println("Insira o autor:");
 		l.setAutor(stdin.nextLine());
-		System.out.println("Insira uma palavra chave:");
-		l.addKeyword(stdin.nextLine());
+		
+		System.out.println("Insira o ID do livro:");
+		l.setId(stdin.nextLine());
+		
+		System.out.println("As palavras chave separadas por ';' palavra chave:");
+		String[] aux = stdin.nextLine().split(";");
+        for(String s: aux){
+            l.addKeyword(s);
+        }
+        
+        System.out.println("Insira a editora");
+		l.setEditora(stdin.nextLine());
+		
+		 System.out.println("Insira Preco");
+		l.setPreco(stdin.nextDouble());
+		
 		
 		try {
 			Escrevinhator.toXML(l);

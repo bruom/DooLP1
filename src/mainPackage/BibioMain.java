@@ -1,5 +1,6 @@
 package mainPackage;
  
+import java.util.ArrayList;
 import java.util.Scanner;
  
 import javax.xml.bind.JAXBException;
@@ -10,7 +11,11 @@ import fileReaderWriter.Escrevinhator;
  
 public class BibioMain {
 	
-	public BibioMain(){
+	
+	public BibioMain() throws JAXBException{
+		Acervo a = new Acervo();
+		Escrevinhator.toXML(a);
+		Acervo acervo = (Acervo)Escrevinhator.fromXML("ACERVO");
 		Scanner stdin = new Scanner(System.in);
 		String userIn;
 		String senha;
@@ -52,7 +57,9 @@ public class BibioMain {
 		Livro l = new Livro();
 		System.out.println("Insira o ID do livro:");
 		System.out.println(stdin.nextLine());
-		l.setId(stdin.nextLine());
+		String temp = stdin.nextLine();
+		l.setId(temp);
+		acervo.addIndex(temp);
 		System.out.println("Insira o titulo do livro:");
 		l.setTitulo(stdin.nextLine());
 		System.out.println("Insira o autor:");
@@ -66,10 +73,26 @@ public class BibioMain {
 			System.out.println("ERRO MALUCO DO K7");
 			e.printStackTrace();
 		}
+		
+		busca(acervo);
+		
 	}
 	
-	public static void main(String[]args){
+	public static void main(String[]args) throws JAXBException{
 		BibioMain bibio = new BibioMain();
+	}
+	
+	public static void busca(Acervo acervo) throws JAXBException{
+		Scanner stdin = new Scanner(System.in);
+		ArrayList<String> al = new ArrayList<String>();
+		System.out.println("Acessando sistema de consulta de acervo.");
+		System.out.println("Digite os termos-chave da pesquisa, separados por ';' :");
+		String[] aux = stdin.nextLine().split(";");
+		for(String s: aux){
+			al.add(s);
+		}
+		Texto t = acervo.consultaAcervo(al).get(0);
+		System.out.println(t.getTitulo());
 	}
 	 
 }
