@@ -3,10 +3,11 @@ package mainPackage;
 import java.util.ArrayList;
 import java.util.Scanner;
  
+
 import javax.xml.bind.JAXBException;
  
+
 import biblio.*;
- 
 import fileReaderWriter.Escrevinhator;
  
 public class BibioMain {
@@ -16,13 +17,12 @@ public class BibioMain {
 	public BibioMain() throws JAXBException{
 		Acervo acervo = (Acervo)Escrevinhator.fromXML("ACERVO");
 		
-		
 		System.out.println("Bem vindo ao Bibliotecator v.1!");
 		System.out.println("Um projeto por Bruno Omella e Gabriel Melo.");
 		System.out.println("Lembre-se de ler o arquivo 'readMe' na documentacao!");
 		
-		login();
-		
+		Usuario user = login();
+		mainMenu(user);
 	}
 	
 	
@@ -52,35 +52,37 @@ public class BibioMain {
 		tipo = stdin.nextInt();
 		switch(tipo){
 			case 1:
-				criaUsuario(new Aluno());
+				criaUsuario(new Aluno(),"aluno");
 				break;
 			case 2:
-				criaUsuario(new Professor());
+				criaUsuario(new Professor(),"prof");
 				break;
 			case 3:
-				criaUsuario(new Editora());
+				criaUsuario(new Editora(),"editora");
 				break;
 			case 4:
-				criaUsuario(new Admin());
+				criaUsuario(new Admin(),"admin");
 				break;
 		}
 	}
 	
 	
-	public static void criaUsuario(Usuario user) throws JAXBException{
+	public static void criaUsuario(Usuario user, String s) throws JAXBException{
 		System.out.println("Registro de novo usuário");
 		System.out.println("Insira o nome de usuário:");
+		System.out.println(stdin.nextLine());
 		user.setNome(stdin.nextLine());
 		System.out.println("Insira a senha do novo usuário:");
 		user.setPass(stdin.nextLine());
+		user.setId(s + user.getNome());
 		Escrevinhator.toXML(user);		
 	}
 	
 	
-	public static void login() throws JAXBException{
+	public static Usuario login() throws JAXBException{
 		String userIn = null;
 		String id= null;
-		Usuario user;
+		Usuario user = null;
  
 		boolean match = false;
  
@@ -103,11 +105,12 @@ public class BibioMain {
 			else if(userIn != user.getPass())
 				System.out.println("\nSenha incorreta.");
 		}
+		return user;
 	}
 	
 	public static boolean validaUser(String id){
 		try {
-			Usuario user = (Usuario)Escrevinhator.fromXML("usuario-"+id);
+			Escrevinhator.fromXML("aluno-"+id);
 			return true;
 		} catch (JAXBException e) {
 			System.out.println("Usuario nao existente!");
@@ -136,6 +139,38 @@ public class BibioMain {
 		} catch (JAXBException e) {
 			System.out.println("ERRO MALUCO DO K7");
 			e.printStackTrace();
+		}
+	}
+	
+	public static void mainMenu(Usuario user){
+		int tipo = user.getPermissao();
+		System.out.println("Bem vindo, " + user.getNome());
+		System.out.println("Menu principal: ");
+		switch(tipo){
+		
+		
+		case 0:
+ 
+			System.out.println("1.Acessar acervo\n2.Minha conta\n3.Log-out");
+			break;
+			
+			
+			
+		case 1:
+			System.out.println("1.Acessar acervo\n2.Upload de Artigos\n3.Minha conta\n4.Log-out");
+			break;
+			
+			
+			
+		case 2:
+			System.out.println("1.Acessar acervo\n2.Upload de Livros\n3.Minha conta\n4.Log-out");
+			break;
+			
+			
+			
+		case 3:
+			System.out.println("1.Acessar acervo\n2.Upload de Textos\n3.Atualizar usuarios\n4.Minha conta\n5.Log-out");
+			break;
 		}
 	}
 	 

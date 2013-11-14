@@ -106,28 +106,29 @@ public class Escrevinhator {
 			jaxbContext = JAXBContext.newInstance(Aluno.class);
 			
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			Usuario o = (Aluno) jaxbUnmarshaller.unmarshal(file);
+			Aluno o = (Aluno) jaxbUnmarshaller.unmarshal(file);
+			System.out.println("Passei!!!!");
 			return o;
 		}else if(id.contains("admin")){
 			file = new File(usuarios + id + ".usuario");
 			jaxbContext = JAXBContext.newInstance(Admin.class);
 			
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			Usuario o = (Admin) jaxbUnmarshaller.unmarshal(file);
+			Admin o = (Admin) jaxbUnmarshaller.unmarshal(file);
 			return o;
 		}else if(id.contains("prof")){
 			file = new File(usuarios + id + ".usuario");
 			jaxbContext = JAXBContext.newInstance(Professor.class);
 			
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			Usuario o = (Professor) jaxbUnmarshaller.unmarshal(file);
+			Professor o = (Professor) jaxbUnmarshaller.unmarshal(file);
 			return o;
 		}else if(id.contains("editora")){
 			file = new File(usuarios + id + ".usuario");
 			jaxbContext = JAXBContext.newInstance(Aluno.class);
 			
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			Usuario o = (Editora) jaxbUnmarshaller.unmarshal(file);
+			Editora o = (Editora) jaxbUnmarshaller.unmarshal(file);
 			return o;
 		}else if(id.equals("ACERVO")){
 			file = new File(root+"ACERVO.ACERVO");

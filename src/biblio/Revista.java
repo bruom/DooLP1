@@ -1,12 +1,14 @@
 package biblio;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement
 public class Revista extends Artigo {
 	
 	private String publicacao;
 	private String data;
 	private String pagina;
+	
 	
 	public Revista(){
 		super();

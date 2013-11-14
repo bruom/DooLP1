@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<livro id="OLivro">
+    <autor>Gabriel</autor>
+    <keywords>OLivro</keywords>
+    <keywords>grande</keywords>
+    <titulo></titulo>
+    <ano>2013</ano>
+    <editora>Gabriel Books</editora>
+    <genero></genero>
+    <preco>128.0</preco>
+</livro>
