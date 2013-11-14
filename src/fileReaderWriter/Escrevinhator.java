@@ -41,6 +41,11 @@ public class Escrevinhator {
 		}else if(o instanceof Usuario){
 			file = new File(usuarios + o.getId() + ".usuario");
 			jaxbContext = JAXBContext.newInstance(Usuario.class);
+		}else if(o instanceof Acervo){
+			file = new File(root+"ACERVO.ACERVO");
+			jaxbContext = JAXBContext.newInstance(Acervo.class);
+		}else{
+			System.out.println("ERRO NO ESCREVINHATOR, NO TOXML!");
 		}
 		
 		 
@@ -95,6 +100,13 @@ public class Escrevinhator {
 			
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			Usuario o = (Usuario) jaxbUnmarshaller.unmarshal(file);
+			return o;
+		}else if(id.equals("ACERVO")){
+			file = new File(root+"ACERVO.ACERVO");
+			jaxbContext = JAXBContext.newInstance(Acervo.class);
+			
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Acervo o = (Acervo) jaxbUnmarshaller.unmarshal(file);
 			return o;
 		}else{
 			return null;
