@@ -40,11 +40,11 @@ public class Acervo implements Gravavel {
         }
         
         public void addIndex(String s){
-        	this.index.add(s);
+                this.index.add(s);
         }
         
         public ArrayList<String> getIndex(){
-        		return this.index;
+                        return this.index;
         }
         
         @Override

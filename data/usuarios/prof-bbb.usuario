@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<professor id="prof-bbb">
+    <nome>bbb</nome>
+    <pass>bbb</pass>
+</professor>
