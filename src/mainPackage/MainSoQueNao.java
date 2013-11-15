@@ -16,7 +16,8 @@ public class MainSoQueNao {
 
 	public static void main(String[] args) throws IOException, JAXBException {
 
-		login();
+		// login();
+		singin();
 
 	}
 
@@ -47,7 +48,11 @@ public class MainSoQueNao {
 						u = (Professor) Escrevinhator.fromXML("prof-"
 								+ userName);
 					} else if (userIdTemp.contains("editora")) {
-						u = (Editora) Escrevinhator.fromXML("editora-" + userName);
+						u = (Editora) Escrevinhator.fromXML("editora-"
+								+ userName);
+					} else {
+						u = (Usuario) Escrevinhator.fromXML("usuario-"
+								+ userName);
 					}
 
 					while (!u.getPass().equals(password)) {
@@ -68,6 +73,89 @@ public class MainSoQueNao {
 		}
 
 		return null;
+
+	}
+
+	public static void singin() throws IOException, JAXBException {
+		System.out.println("Inscricao de Novo Usuario");
+		BufferedReader s = new BufferedReader(new InputStreamReader(System.in));
+		int op;
+		
+
+		do {
+			System.out.println("Entre com o username");
+			String username = s.readLine();
+			System.out.println("Escolha a permissao");
+			System.out.println("Aluno - 1\nProfessor - 2\nEditora - 3\nAdmin - 4");
+			op = Integer.parseInt(s.readLine());
+			switch (op) {
+			case 1:
+				if (!FilesIn.usuarios().contains(
+						"aluno-" + username + ".usuario")) {
+					Aluno aluno = new Aluno();
+					System.out.println("Entre com seu Nome");
+					aluno.setNome(s.readLine());
+					System.out.println("Entre com a nova senha");
+					aluno.setPass(s.readLine());
+					aluno.setId("aluno-" + username);
+					Escrevinhator.toXML(aluno);
+					System.out.println("Usuario Aluno Criado!");
+				} else {
+					op = 0;
+				}
+				break;
+			case 2:
+				if (!FilesIn.usuarios().contains(
+						"prof-" + username + ".usuario")) {
+					Professor professor = new Professor();
+					System.out.println("Entre com seu Nome");
+					professor.setNome(s.readLine());
+					System.out.println("Entre com a nova senha");
+					professor.setPass(s.readLine());
+					professor.setId("prof-" + username);
+					Escrevinhator.toXML(professor);
+					System.out.println("Usuario Professor Criado!");
+				} else {
+					op = 0;
+				}
+				break;
+			case 3:
+				if (!FilesIn.usuarios().contains(
+						"editora-" + username + ".usuario")) {
+					Editora editora = new Editora();
+					System.out.println("Entre com o nome da editora");
+					editora.setNome(s.readLine());
+					System.out.println("Entre com a nova senha");
+					editora.setPass(s.readLine());
+					editora.setId("editora-" + username);
+					Escrevinhator.toXML(editora);
+					System.out.println("Usuario Editora Criado!");
+				} else {
+					op = 0;
+				}
+				break;
+			case 4:
+				if (!FilesIn.usuarios().contains(
+						"admin-" + username + ".usuario")) {
+					Admin admin = new Admin();
+					System.out.println("Entre com o nome do administrador");
+					admin.setNome(s.readLine());
+					System.out.println("Entre com a nova senha");
+					admin.setPass(s.readLine());
+					admin.setId("admin-" + username);
+					Escrevinhator.toXML(admin);
+					System.out.println("Usuario Editora Criado!");
+				} else {
+					op = 0;
+				}
+				break;
+			default:
+				break;
+			}
+			if(op==0){
+				System.out.println("Por favor, escolha um outro username");
+			}
+		} while (op == 0);
 
 	}
 

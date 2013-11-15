@@ -17,7 +17,7 @@ public class FilesIn {
 		for (int i = 0; i < listOfFiles.length; i++) {
 
 			lista.add(listOfFiles[i].getName());
-			System.out.println("File " + listOfFiles[i].getName());
+			//System.out.println("File " + listOfFiles[i].getName());
 
 		}
 
@@ -32,7 +32,7 @@ public class FilesIn {
 		for (int i = 0; i < listOfFiles.length; i++) {
 
 			lista.add(listOfFiles[i].getName());
-			System.out.println("File " + listOfFiles[i].getName());
+			//System.out.println("File " + listOfFiles[i].getName());
 
 		}
 
